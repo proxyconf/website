@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+public/
+static/css/style.css
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+.cache/
+tmp/

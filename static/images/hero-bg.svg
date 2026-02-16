@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Catppuccin Mocha colors -->
+    <linearGradient id="grid-fade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cba6f7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#cba6f7" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="line-mauve" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cba6f7" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#cba6f7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#cba6f7" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="line-teal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94e2d5" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#94e2d5" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#94e2d5" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="line-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f5c2e7" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#f5c2e7" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f5c2e7" stop-opacity="0"/>
+    </linearGradient>
+    
+    <radialGradient id="glow-center" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#cba6f7" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#cba6f7" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#cba6f7" stop-opacity="0"/>
+    </radialGradient>
+    
+    <radialGradient id="glow-teal" cx="80%" cy="60%" r="40%">
+      <stop offset="0%" stop-color="#94e2d5" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#94e2d5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Subtle background glows -->
+  <rect width="100%" height="100%" fill="url(#glow-center)"/>
+  <rect width="100%" height="100%" fill="url(#glow-teal)"/>
+  
+  <!-- Subtle grid pattern -->
+  <g opacity="0.4">
+    <!-- Horizontal lines -->
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="url(#line-mauve)" stroke-width="1"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="url(#line-teal)" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="url(#line-pink)" stroke-width="1"/>
+    
+    <!-- Vertical lines -->
+    <line x1="300" y1="0" x2="300" y2="800" stroke="url(#line-mauve)" stroke-width="1" transform="rotate(90 300 400)"/>
+    <line x1="600" y1="0" x2="600" y2="800" stroke="url(#line-teal)" stroke-width="1" transform="rotate(90 600 400)"/>
+    <line x1="900" y1="0" x2="900" y2="800" stroke="url(#line-pink)" stroke-width="1" transform="rotate(90 900 400)"/>
+  </g>
+  
+  <!-- Floating dots/nodes -->
+  <g opacity="0.6">
+    <circle cx="200" cy="150" r="3" fill="#cba6f7">
+      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="400" cy="250" r="2" fill="#f5c2e7">
+      <animate attributeName="opacity" values="0.5;0.2;0.5" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="800" cy="180" r="4" fill="#94e2d5">
+      <animate attributeName="opacity" values="0.6;0.25;0.6" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1000" cy="350" r="2" fill="#cba6f7">
+      <animate attributeName="opacity" values="0.4;0.15;0.4" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="450" r="3" fill="#74c7ec">
+      <animate attributeName="opacity" values="0.5;0.2;0.5" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="950" cy="550" r="3" fill="#f5c2e7">
+      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="500" r="2" fill="#94e2d5">
+      <animate attributeName="opacity" values="0.4;0.15;0.4" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="700" cy="650" r="2" fill="#cba6f7">
+      <animate attributeName="opacity" values="0.5;0.2;0.5" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Subtle connecting lines -->
+  <g stroke-width="1" fill="none" opacity="0.2">
+    <path d="M200 150 Q300 200 400 250" stroke="#cba6f7" stroke-dasharray="4 4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M800 180 Q900 260 1000 350" stroke="#94e2d5" stroke-dasharray="4 4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M550 500 Q620 570 700 650" stroke="#f5c2e7" stroke-dasharray="4 4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="3.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>

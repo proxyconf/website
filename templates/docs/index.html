@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} - {{ config.title }}{% endblock %}
+{% block description %}{{ section.description }}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-text mb-4">{{ section.title }}</h1>
+    <p class="text-xl text-subtext1 max-w-2xl mx-auto">
+      {{ section.description }}
+    </p>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {% for project in config.extra.projects %}
+    <a href="{{ project.docs }}" class="project-card group">
+      <div class="flex items-start justify-between mb-4">
+        <span class="badge {% if project.language == 'Rust' %}badge-rust{% else %}badge-elixir{% endif %}">
+          {{ project.language }}
+        </span>
+      </div>
+      
+      <h2 class="text-xl font-semibold text-text mb-2 group-hover:text-primary transition-colors">
+        {{ project.name }}
+      </h2>
+      <p class="text-subtext0 mb-4">{{ project.description }}</p>
+      
+      <span class="inline-flex items-center text-primary">
+        Get Started
+        <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </span>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{
+  "name": "proxyconf-website",
+  "version": "1.0.0",
+  "description": "ProxyConf umbrella organization website",
+  "scripts": {
+    "dev": "concurrently \"npm run watch:css\" \"zola serve\"",
+    "watch:css": "tailwindcss -i ./sass/input.css -o ./static/css/style.css --watch",
+    "build:css": "tailwindcss -i ./sass/input.css -o ./static/css/style.css --minify",
+    "build": "npm run build:css && zola build"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "envoy",
+    "api-gateway",
+    "proxy",
+    "openapi"
+  ],
+  "author": "ProxyConf",
+  "license": "Apache-2.0"
+}

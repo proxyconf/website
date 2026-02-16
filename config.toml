@@ -1,0 +1,73 @@
+# ProxyConf Website Configuration
+# https://www.getzola.org/documentation/getting-started/configuration/
+
+base_url = "https://proxyconf.io"
+title = "ProxyConf"
+description = "Enterprise API Management for Envoy Proxy"
+default_language = "en"
+compile_sass = true
+minify_html = true
+build_search_index = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
+[markdown]
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+smart_punctuation = true
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+[extra]
+# Organization info
+org_name = "ProxyConf"
+org_github = "https://github.com/proxyconf"
+org_twitter = "https://twitter.com/proxyconf"
+org_email = "proxyconf@pm.me"
+
+# Projects
+[[extra.projects]]
+name = "ProxyConf"
+description = "Full-featured Envoy control plane for enterprise API management"
+language = "Elixir"
+repo = "https://github.com/proxyconf/proxyconf"
+docs = "/docs/proxyconf/"
+icon = "server"
+
+[[extra.projects]]
+name = "ex_control_plane"
+description = "Elixir library for building custom Envoy control planes"
+language = "Elixir"
+repo = "https://github.com/proxyconf/ex_control_plane"
+docs = "/docs/ex-control-plane/"
+icon = "code"
+
+[[extra.projects]]
+name = "API-Fence"
+description = "High-performance Envoy HTTP filter for OpenAPI validation"
+language = "Rust"
+repo = "https://github.com/proxyconf/api-fence"
+docs = "/docs/api-fence/"
+icon = "shield"
+
+# Schema URL for API-Fence config documentation
+api_fence_schema_url = "https://proxyconf.github.io/api-fence/config-schema.json"
+
+# Navigation
+[[extra.nav]]
+name = "Docs"
+url = "/docs/"
+
+[[extra.nav]]
+name = "GitHub"
+url = "https://github.com/proxyconf"
+external = true

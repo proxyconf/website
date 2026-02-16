@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
+{% block description %}{{ page.description | default(value=page.summary) }}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+    <!-- Sidebar -->
+    <aside class="hidden lg:block lg:col-span-3">
+      <nav class="docs-sidebar pr-4">
+        {% set section = get_section(path=page.ancestors | last) %}
+        
+        <div class="mb-6">
+          <h3 class="text-sm font-semibold text-text uppercase tracking-wider mb-3">
+            {{ section.title }}
+          </h3>
+          
+          <ul class="space-y-1">
+            {% for sibling in section.pages %}
+            <li>
+              <a href="{{ sibling.permalink }}" 
+                 class="{% if sibling.permalink == page.permalink %}docs-nav-item-active{% else %}docs-nav-item{% endif %}">
+                {{ sibling.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        {% for subsection in section.subsections %}
+        {% set sub = get_section(path=subsection) %}
+        <div class="mb-6">
+          <h3 class="text-sm font-semibold text-subtext1 uppercase tracking-wider mb-3">
+            {{ sub.title }}
+          </h3>
+          <ul class="space-y-1">
+            {% for subpage in sub.pages %}
+            <li>
+              <a href="{{ subpage.permalink }}" 
+                 class="{% if subpage.permalink == page.permalink %}docs-nav-item-active{% else %}docs-nav-item{% endif %}">
+                {{ subpage.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </nav>
+    </aside>
+    
+    <!-- Main content -->
+    <main class="lg:col-span-7">
+      <article class="prose prose-lg max-w-none">
+        <header class="mb-8 not-prose">
+          <h1 class="text-3xl font-bold text-text mb-2">{{ page.title }}</h1>
+          {% if page.description %}
+          <p class="text-lg text-subtext1">{{ page.description }}</p>
+          {% endif %}
+        </header>
+        
+        {{ page.content | safe }}
+      </article>
+      
+      <!-- Page navigation -->
+      <nav class="mt-12 pt-8 border-t border-surface0">
+        <div class="flex justify-between">
+          {% if page.lower %}
+          <a href="{{ page.lower.permalink }}" class="flex items-center text-subtext1 hover:text-primary transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            {{ page.lower.title }}
+          </a>
+          {% else %}
+          <div></div>
+          {% endif %}
+          
+          {% if page.higher %}
+          <a href="{{ page.higher.permalink }}" class="flex items-center text-subtext1 hover:text-primary transition-colors">
+            {{ page.higher.title }}
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+          {% else %}
+          <div></div>
+          {% endif %}
+        </div>
+      </nav>
+    </main>
+    
+    <!-- Table of contents -->
+    <aside class="hidden lg:block lg:col-span-2">
+      {% if page.toc %}
+      <nav class="sticky top-20">
+        <h3 class="text-sm font-semibold text-text uppercase tracking-wider mb-4">On this page</h3>
+        <ul class="space-y-2">
+          {% for h2 in page.toc %}
+          <li>
+            <a href="#{{ h2.id }}" class="toc-link">{{ h2.title }}</a>
+            {% if h2.children %}
+            <ul class="mt-2 ml-3 space-y-1">
+              {% for h3 in h2.children %}
+              <li>
+                <a href="#{{ h3.id }}" class="toc-link text-xs">{{ h3.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+    </aside>
+  </div>
+</div>
+{% endblock %}

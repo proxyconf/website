@@ -1,0 +1,70 @@
+# Deploy ProxyConf website to GitHub Pages
+#
+# This workflow builds the Zola static site with Tailwind CSS
+# and deploys it to GitHub Pages.
+
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build Tailwind CSS
+        run: npm run build:css
+
+      - name: Setup Zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.19.2
+
+      - name: Fetch API-Fence schema
+        run: |
+          mkdir -p static/schemas
+          curl -sSL "${{ vars.API_FENCE_SCHEMA_URL || 'https://proxyconf.github.io/api-fence/config-schema.json' }}" \
+            -o static/schemas/api-fence-config.json || echo '{}' > static/schemas/api-fence-config.json
+
+      - name: Build Zola site
+        run: zola build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

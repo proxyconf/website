@@ -1,0 +1,217 @@
+/* Tailwind CSS Input */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Geist Font - loaded from CDN in base.html */
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-base text-text antialiased;
+  }
+  
+  /* Selection colors */
+  ::selection {
+    @apply bg-mauve/30 text-text;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-mantle;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface1 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface2;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Navigation */
+  .nav-link {
+    @apply text-subtext1 hover:text-pink transition-colors duration-200;
+  }
+  
+  .nav-link-active {
+    @apply text-pink;
+  }
+  
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-mauve to-pink text-base hover:shadow-glow-sm hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  .btn-secondary {
+    @apply btn bg-surface0 text-text hover:bg-surface1 border border-surface1 hover:border-mauve/50;
+  }
+  
+  .btn-outline {
+    @apply btn bg-transparent text-mauve border border-mauve hover:bg-mauve/10 hover:shadow-glow-sm;
+  }
+  
+  /* Cards */
+  .card {
+    @apply bg-surface0/80 backdrop-blur-sm border border-surface1 rounded-xl p-6;
+  }
+  
+  .card-hover {
+    @apply card hover:border-mauve/50 hover:shadow-lg hover:shadow-mauve/10 transition-all duration-300;
+  }
+  
+  /* Project cards */
+  .project-card {
+    @apply card-hover relative overflow-hidden;
+  }
+  
+  .project-card::before {
+    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink via-mauve to-sapphire;
+    content: '';
+  }
+  
+  /* Feature cards */
+  .feature-card {
+    @apply card text-center hover:border-teal/40 hover:shadow-lg hover:shadow-teal/10 transition-all duration-300;
+  }
+  
+  .feature-icon {
+    @apply w-12 h-12 mx-auto mb-4 text-teal;
+  }
+  
+  /* Code blocks in docs */
+  .code-block {
+    @apply bg-mantle border border-surface0 rounded-lg overflow-hidden;
+  }
+  
+  .code-block-header {
+    @apply bg-surface0 px-4 py-2 text-sm text-subtext0 border-b border-surface1 flex items-center justify-between;
+  }
+  
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-rust {
+    @apply badge bg-peach/20 text-peach;
+  }
+  
+  .badge-elixir {
+    @apply badge bg-mauve/20 text-mauve;
+  }
+  
+  /* Documentation sidebar */
+  .docs-sidebar {
+    @apply sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto;
+  }
+  
+  .docs-nav-item {
+    @apply block py-1.5 px-3 text-sm text-subtext1 hover:text-pink hover:bg-surface0 rounded-lg transition-colors;
+  }
+  
+  .docs-nav-item-active {
+    @apply docs-nav-item bg-mauve/10 text-mauve;
+  }
+  
+  /* Table of contents */
+  .toc-link {
+    @apply block py-1 text-sm text-subtext0 hover:text-pink border-l-2 border-surface1 pl-3 -ml-px transition-colors;
+  }
+  
+  .toc-link-active {
+    @apply toc-link border-mauve text-mauve;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink via-mauve to-sapphire;
+    background-size: 200% auto;
+  }
+  
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-peach via-pink to-mauve;
+  }
+  
+  .text-gradient-cool {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal via-sapphire to-blue;
+  }
+  
+  .gradient-border {
+    @apply relative;
+  }
+  
+  .gradient-border::before {
+    @apply absolute inset-0 rounded-xl bg-gradient-to-r from-pink via-mauve to-sapphire -z-10;
+    content: '';
+    padding: 1px;
+  }
+  
+  /* Animated gradient background */
+  .gradient-animated {
+    background: linear-gradient(-45deg, theme('colors.mauve'), theme('colors.pink'), theme('colors.sapphire'), theme('colors.teal'));
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Glow effects */
+  .glow-mauve {
+    box-shadow: 0 0 30px theme('colors.mauve / 40%');
+  }
+  
+  .glow-pink {
+    box-shadow: 0 0 30px theme('colors.pink / 40%');
+  }
+  
+  .glow-teal {
+    box-shadow: 0 0 30px theme('colors.teal / 40%');
+  }
+  
+  /* Floating animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Slow pulse animation for decorative blobs */
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  /* Blob shapes for decoration */
+  .blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+}
