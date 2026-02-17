@@ -1,7 +1,7 @@
 # ProxyConf Website Configuration
 # https://www.getzola.org/documentation/getting-started/configuration/
 
-base_url = "https://proxyconf.io"
+base_url = "https://proxyconf.com"
 title = "ProxyConf"
 description = "Enterprise API Management for Envoy Proxy"
 default_language = "en"
@@ -44,7 +44,7 @@ docs = "/docs/proxyconf/"
 icon = "server"
 
 [[extra.projects]]
-name = "ex_control_plane"
+name = "ExControlPlane"
 description = "Elixir library for building custom Envoy control planes"
 language = "Elixir"
 repo = "https://github.com/proxyconf/ex_control_plane"
