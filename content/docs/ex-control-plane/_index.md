@@ -7,7 +7,7 @@ page_template = "docs/page.html"
 
 [extra]
 language = "Elixir"
-repo = "https://github.com/proxyconf/proxyconf"
+repo = "https://github.com/proxyconf/ex_control_plane"
 +++
 
 ExControlPlane is an Elixir library that implements an Envoy xDS/ADS (Aggregated Discovery Service) control plane. It provides the core infrastructure for dynamically configuring Envoy proxy instances via gRPC.
